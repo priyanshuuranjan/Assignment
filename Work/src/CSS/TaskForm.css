@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 30px;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #b59b9b;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -23,7 +23,7 @@
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ad9595;
   border-radius: 5px;
   font-size: 1em;
   transition: border-color 0.3s ease;

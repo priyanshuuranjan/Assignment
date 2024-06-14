@@ -19,7 +19,7 @@ header h1 {
 }
 
 .task-details {
-  background-color: #9cadc1;
+  background-color: #7f91a7;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -43,8 +43,8 @@ header h1 {
 .task-actions a,
 .task-actions button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #9cabbb;
+  color: rgb(183, 138, 138);
   text-decoration: none;
   border-radius: 5px;
   border: none;
