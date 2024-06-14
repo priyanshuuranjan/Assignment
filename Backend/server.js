@@ -11,13 +11,15 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-mongoose.connect('mongodb://localhost:27017/crud', {
+mongoose.connect('mongodb://127.0.0.1:27017/crud', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
+
 
 const taskSchema = new mongoose.Schema({
   title: String,
@@ -37,7 +39,6 @@ app.get('/api/tasks', async (req, res) => {
   }
 });
 
-
 app.get('/api/tasks/:id', async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -49,7 +50,6 @@ app.get('/api/tasks/:id', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 app.post('/api/tasks', async (req, res) => {
   const task = new Task({
@@ -65,7 +65,6 @@ app.post('/api/tasks', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
-
 
 app.put('/api/tasks/:id', async (req, res) => {
   try {
@@ -84,18 +83,16 @@ app.put('/api/tasks/:id', async (req, res) => {
   }
 });
 
-
 app.delete('/api/tasks/:id', async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
     }
-    await task.deleteOne(); // Use deleteOne() to delete the task
-    res.json({ message: 'Task deleted successfully' });
+    await task.deleteOne();
+    res.json({ message: 'Task deleted' });
   } catch (err) {
-    console.error('Error deleting task:', err);
-    res.status(500).json({ message: 'Failed to delete task' });
+    res.status(500).json({ message: err.message });
   }
 });
 
